@@ -1,9 +1,12 @@
+
 import os
 import time
 import psycopg2
+from flask_cors import CORS
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+CORS(app)
 
 def get_db():
     return psycopg2.connect(
@@ -102,3 +105,4 @@ init_db()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+   
