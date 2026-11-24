@@ -101,8 +101,11 @@ def slow():
 def crash():
     return jsonify(error="simulated failure"), 500
 
-init_db()
+if os.environ.get("SKIP_DB_INIT") != "1":
+    init_db()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
+
    
